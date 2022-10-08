@@ -1,7 +1,14 @@
 import React from "react";
-import Header from "./Header";
-import MemeGenerator from "./MemeGenerator";
+import Header from "./components/Header";
+import CardGenerator from "./Screens/CardGenerator";
+// import Profile from "./Screens/Profile";
+import Login from "./Screens/Login"
 import "./style.css";
+import {Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { useState } from "react";
+import Settings from './Screens/Profile'
+import Wait from './Screens/Wait'
+import Home from './Screens/Home'
 
 /**
  * Create 2 new components - Header and MemeGenerator
@@ -11,14 +18,53 @@ import "./style.css";
  */
 
 const App = () => {
+    const [isLog, setLog] = useState(false);
+    const navigate = useNavigate();
+    
     return (
-        <div>
-            <Header />
-            <h2>Fill these in to watch the magic✨happen</h2>
-            <MemeGenerator />
-        </div>
+            <div>
+                <Routes>
+                    <Route exact path='/' element={<Login setLog={setLog} navigate={navigate}/>}/>
+                    {/* <Route path='/profile' render={() => <Profile />}/> */}
+                    {isLog && (
+                        <Route path='/main' element={
+                        <div>
+                            <Header navigate={navigate}/>
+                            <CardGenerator navigate={navigate} />
+                        </div>
+                    }/>
+                    )}
+                    {isLog && (
+                        <Route path='/home' element={
+                        <div>
+                            {/* <Header navigate={navigate}/>
+                            <Home /> */}
+                            <Navigate to="/main"/> // temporarily reroute
+                        </div>
+                    }/>
+                    )}
+                    {isLog && (
+                        <Route path='/settings' element={
+                        <div>
+                            <Header navigate={navigate}/>
+                            <Settings />
+                        </div>
+                    }/>
+                    )}
+                    {isLog && (
+                        <Route path='/wait' element={
+                        <div>
+                            <Header navigate={navigate}/>
+                            <Wait />
+                        </div>
+                    }/>
+                    )}
+                    
+                    <Route path='*' element={<Navigate to="/"/>}/>
+                </Routes>
+            </div>
         )
-    };
+};
 
 export default App;
 
