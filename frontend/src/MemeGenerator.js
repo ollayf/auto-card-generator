@@ -47,7 +47,7 @@ class MemeGenerator extends Component {
     }
 
     /**
-     * Create the onChagne handler method
+     * Create the onChange handler method
      * It should update the corresponding state on every change of the input box
      */
     handleChange(event) {
