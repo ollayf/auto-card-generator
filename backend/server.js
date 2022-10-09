@@ -8,7 +8,7 @@ import { checkPassword } from './functions/database.js';
 import bodyParser from 'body-parser';
 
 const app = express()
-const port = 3000
+const port = 8000
 app.use(cors())
 app.options('*', cors()); // Have fun with this
 app.use(express.json())
@@ -28,7 +28,8 @@ app.post('/submission', async function(req, res) {
         'theme': Number, // 1 to 7
         'telegram_chat_id': Number
     }
-    submit(req.body.senderName, req.body.recepientName, req.body.message, req.body.prompt, req.body.theme, req.body.telegram_chat_id);
+    console.log(req.body)
+    await submit(req.body.senderName, req.body.recepientName, req.body.message, req.body.prompt, req.body.theme, req.body.telegram_chat_id);
     res.status(200).send("Added your job to queue");
 });
 

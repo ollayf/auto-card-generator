@@ -9,6 +9,7 @@ import { useState } from "react";
 import Settings from './Screens/Profile'
 import Wait from './Screens/Wait'
 import Home from './Screens/Home'
+import axios from "axios";
 
 /**
  * Create 2 new components - Header and MemeGenerator
@@ -20,17 +21,23 @@ import Home from './Screens/Home'
 const App = () => {
     const [isLog, setLog] = useState(false);
     const navigate = useNavigate();
+    const [uid, setUid] = useState(1);
+    const [username, setUsername] = useState('ollayf');
+    const [permissionsId, setPerms] = useState(1);
+    const [telegramId, setTelegram] = useState(333647246);
+
     
     return (
             <div>
                 <Routes>
-                    <Route exact path='/' element={<Login setLog={setLog} navigate={navigate}/>}/>
+                    <Route exact path='/' element={<Login setLog={setLog}
+                    setUid={setUid} setUname={setUsername} setPerms={setPerms} setTelegram={setTelegram} navigate={navigate}/>}/>
                     {/* <Route path='/profile' render={() => <Profile />}/> */}
                     {isLog && (
                         <Route path='/main' element={
                         <div>
                             <Header navigate={navigate}/>
-                            <CardGenerator navigate={navigate} />
+                            <CardGenerator navigate={navigate} telegramId={telegramId} uid={uid} />
                         </div>
                     }/>
                     )}
@@ -39,7 +46,7 @@ const App = () => {
                         <div>
                             {/* <Header navigate={navigate}/>
                             <Home /> */}
-                            <Navigate to="/main"/> // temporarily reroute
+                            <Navigate to="/main"/> 
                         </div>
                     }/>
                     )}

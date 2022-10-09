@@ -16,7 +16,7 @@ import { useState } from "react";
  *      random image (intialize with "http://i.imgflip.com/1bij.jpg")
  */
 
-export default function CardGenerator ({navigate}) {
+export default function CardGenerator ({navigate, telegramId, uid}) {
 
     const [senderName, setSenderName] = useState('');
     const [recepientName, setRecepientName] = useState('');
@@ -25,6 +25,18 @@ export default function CardGenerator ({navigate}) {
     const [theme, setTheme] = useState(0);
 
     const handleSubmit = () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8000/submission/',
+            data: {
+                senderName: senderName,
+                recepientName: recepientName,
+                message: message,
+                prompt: prompt,
+                theme: theme,
+                telegram_chat_id: telegramId
+            }
+        })
         navigate('/wait');
     }
     /**
@@ -93,7 +105,8 @@ export default function CardGenerator ({navigate}) {
                                         <FloatingLabel
                                             controlId="floatingSelectTheme"
                                         >
-                                            <Form.Select aria-label="Floating label select theme">
+                                            <Form.Select aria-label="Floating label select theme"
+                                            onChange={e => setTheme(e.target.value)}>
                                                 <option>Select a Theme</option>
                                                 <option value="1">birthday</option>
                                                 <option value="2">encouragement</option>
@@ -104,7 +117,6 @@ export default function CardGenerator ({navigate}) {
                                                 <option value="7">love</option>
                                                 
                                                 theme = {theme} {/* not sure about this part */}
-                                                onChange={e => setTheme(e.target.value)}
                                             </Form.Select>
                                         </FloatingLabel>
                                     </Col>

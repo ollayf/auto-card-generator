@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 
-const Login = ({navigate, setLog}) => {
+const Login = ({navigate, setLog, setUid, setUname, setPerms, setTelegram}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
