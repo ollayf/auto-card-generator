@@ -2,7 +2,7 @@
 const data = {
     SenderName: "Hosea",
     RecipientName: "YiXuan",
-    Message: "Hello this card is for you",
+    Message: "When I yelled at you this afternoon, it was for your own good. You know that playing computer games for more than two hours is not healthy. It breaks my heart to see you angry, but as a parent, it is my duty to correct you when you are wrong. In a couple of years, you’ll be in college, and you’ll be required to make your own decisions. I shouted at you because I want you to become a responsible person and someone who can stand on his own feet. You are a strong kid, and I want you to set a good example and be a brother he can look up to. Will you do that for Mom and Dad? You are my angel, and I know my little angel will never disappoint me.",
     Prompt: "dove breaking chains",
     Theme: "Encouragement",
 }
@@ -100,8 +100,8 @@ function formatMessage(_message) {
     // console.log(scalefactor,fontsize)
     // console.log(m)
 
-
-    const getMaxNextLine = (input, maxChars = 20) => {
+    let maxChars = 20
+    const getMaxNextLine = (input) => {
         // Split the string into an array of words.
         const allWords = input.split(" ");
         // Find the index in the words array at which we should stop or we will exceed
@@ -119,29 +119,37 @@ function formatMessage(_message) {
         // Return the result.
         return { line, remainingChars };
     };
-
+    let line = getMaxNextLine(_message).line
+    let remainingChars = getMaxNextLine(_message).remainingChars
     let output = [];
-    // If the Message is 40 characters or longer, look to add ellipses at the end of
-    // the second line.
-    if (_message?.length >= 40) {
-        const firstLine = getMaxNextLine(_message);
-        const secondLine = getMaxNextLine(firstLine.remainingChars);
-        output = [firstLine.line];
-        let fmSecondLine = secondLine.line;
-        if (secondLine.remainingChars.length > 0) fmSecondLine += " ...";
-        output.push(fmSecondLine);
+    while (remainingChars.length>maxChars) {
+        output.push(line)
+        console.log(output)
+        line = getMaxNextLine(remainingChars).line
+        remainingChars = getMaxNextLine(remainingChars).remainingChars
     }
-    // If 20 characters or longer, add the entire second line, using a max of half
-    // the characters, making the first line always slightly shorter than the
-    // second.
-    else if (_message?.length >= 20) {
-        const firstLine = getMaxNextLine(_message, _message?.length / 2);
-        output = [firstLine.line, firstLine.remainingChars];
-    }
-    // Otherwise, return the short Message.
-    else {
-        output = [_message];
-    }
+    output.push(line.remainingChars)
+    // // If the Message is 40 characters or longer, look to add ellipses at the end of
+    // // the second line.
+    // if (_message?.length >= 40) {
+    //     const firstLine = getMaxNextLine(_message);
+    //     const secondLine = getMaxNextLine(firstLine.remainingChars);
+    //     output = [firstLine.line];
+    //     let fmSecondLine = secondLine.line;
+    //     if (secondLine.remainingChars.length > 0) fmSecondLine += " ...";
+    //     output.push(fmSecondLine);
+    // }
+    // // If 20 characters or longer, add the entire second line, using a max of half
+    // // the characters, making the first line always slightly shorter than the
+    // // second.
+    // else if (_message?.length >= 20) {
+    //     const firstLine = getMaxNextLine(_message, _message?.length / 2);
+    //     output = [firstLine.line, firstLine.remainingChars];
+    // }
+    // // Otherwise, return the short Message.
+    // else {
+    //     output = [_message];
+    // }
 
     return output;
 };
@@ -156,10 +164,10 @@ const width = 559;
 const height = 396;
 
 let Encouragement = data.Theme
-console.log(Encouragement)
+// console.log(Encouragement)
 let messageX = template.Theme.Encouragement.MessageXYWH[0];
 let messageY = template.Theme.Encouragement.MessageXYWH[1];
-console.log(messageX, messageY) // 63,72
+// console.log(messageX, messageY) // 63,72
 // Set the line height of the text, which varies based on the
 // font size and family.
 const lineHeight = 18; //hardcoded for message
@@ -171,25 +179,25 @@ const context = canvas.getContext("2d");
 const bg = new Image()
 bg.onload = () => context.drawImage(bg, 0, 0)
 bg.onerror = err => { throw err }
-bg.src = './images/sample_card_bg.png'
+bg.src = './images/Love.jpg'
 // OR if From a remote URL:
 // img.src = 'http://picsum.photos/200/300'
 // OR if From a `data:` URI:
 // img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='
 
 // Check Position of Textboxes
-context.fillStyle = "#764abc";
-context.fillRect(63, 72, 260.87, 269.16); //message XYWH
-context.fillRect(438, 339, 105, 28); //sendername XYWH
-context.fillRect(81, 12, 120.75, 28); //recipientname XYWH
+// context.fillStyle = "#764abc";
+// context.fillRect(63, 72, 260.87, 269.16); //message XYWH
+// context.fillRect(438, 339, 105, 28); //sendername XYWH
+// context.fillRect(81, 12, 120.75, 28); //recipientname XYWH
 
 
 // Format message and render to the canvas.
 context.font = '12px "Source Serif Pro"'
-context.textAlign = "left";
+context.textAlign = "center";
 context.fillStyle = template.Theme.Encouragement.colour;
 const formatted = formatMessage(data.Message);
-context.fillText(formatted[0], messageX, (messageY+template.Theme.Encouragement.MessageXYWH[3]/2)); //take note of textAlign property
+context.fillText(formatted[0], (messageX+template.Theme.Encouragement.MessageXYWH[2]/2), (messageY+template.Theme.Encouragement.MessageXYWH[3]/2)); //take note of textAlign property
 // // If we need a second line, we move use the messageY and lineHeight
 // // to find the appropriate Y value.
 if (formatted[1]) context.fillText(formatted[1], messageX, messageY + lineHeight);

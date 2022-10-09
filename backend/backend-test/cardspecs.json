@@ -1,0 +1,220 @@
+{
+    "SenderName": {
+        "XYWHpos": [559,396],
+        "font":"Source Serif Pro",
+        "font-size": 12
+    },
+    "RecipientName": {
+        "XYWHpos": [12,34],
+        "font":"Source Serif Pro",
+        "font-size": 12
+    },
+    "Message": {
+        "font":"Source Serif Pro",
+        "font-size": 12
+    },
+    "Theme": {
+        "Encouragement": {
+            "colour": "000000",
+            "MessageXYWH": [
+                63,
+                72,
+                260.87,
+                269.16
+            ],
+            "SenderName": {
+                "XYWHpos": [
+                    438,
+                    339,
+                    105,
+                    28
+                ],
+                "font":"Source Serif Pro",
+                "font-size": 12
+            },
+            "RecipientName": {
+                "XYWHpos": [
+                    81,
+                    12,
+                    120.75,
+                    28
+                ],
+                "font":"Source Serif Pro",
+                "font-size": 12
+            },
+            "artXYWH": [
+                363.91,
+                19.31,
+                175.45,
+                175.45
+            ]
+        }
+    },
+        "Birthday": {
+            "colour": "FFFFFF",
+            "MessageXYWH": [
+                63,
+                72,
+                260.87,
+                269.16
+            ],
+            "SenderName": {
+                "XYWHpos": [
+                    438,
+                    339,
+                    105,
+                    28
+                ],
+                "font":"Source Serif Pro",
+                "font-size": 12
+            },
+            "RecipientName": {
+                "XYWHpos": [
+                    81,
+                    12,
+                    120.75,
+                    28
+                ], 
+                "font":"Source Serif Pro",
+                "font-size": 12,
+            },
+            "artXYWH": [
+                363.91,
+                19.31,
+                175.45,
+                175.45
+            ]
+        },
+    "Love": {
+        "colour": "000000",
+        "MessageXYWH": [
+            63,
+            72,
+            260.87,
+            269.16
+        ],
+        "SenderName": {
+            "XYWHpos": [
+                438,
+                339,
+                105,
+                28
+            ],"Source Serif Pro",
+            "font-size": 12,
+        }
+        "RecipientName": {
+            "XYWHpos": [
+                81,
+                12,
+                120.75,
+                28
+            ], "Source Serif Pro",
+            "font-size": 12,
+        }
+        "artXYWH": [
+            363.91,
+            19.31,
+            175.45,
+            175.45
+        ]
+    },
+    "Admin": {
+        "colour": "FFFFFF",
+        "MessageXYWH": [
+            130,
+            144,
+            211,
+            211
+        ],
+        "SenderName": {
+            "XYWHpos": [
+                438,
+                339,
+                105,
+                28
+            ],"Source Serif Pro",
+            "font-size": 12,
+        }
+        "RecipientName": {
+            "XYWHpos": [
+                81,
+                12,
+                120.75,
+                28
+            ], "Source Serif Pro",
+            "font-size": 12,
+        }
+        "artXYWH": [
+            363.47,
+            19.29,
+            175.24,
+            175.24
+        ]
+    },
+    "Melancholic": {
+        "colour": "FFFFFF",
+        "MessageXYWH": [
+            79,
+            91,
+            198,
+            193
+        ],
+        "SenderName": {
+            "XYWHpos": [
+                438,
+                339,
+                105,
+                28
+            ],"Source Serif Pro",
+            "font-size": 12,
+        }
+        "RecipientName": {
+            "XYWHpos": [
+                81,
+                12,
+                120.75,
+                28
+            ], "Source Serif Pro",
+            "font-size": 12,
+        }
+        "artXYWH": [
+            356.39,
+            35.6,
+            175.45,
+            175.45
+        ]
+    },
+    "Festive": {
+        "colour": "000000",
+        "MessageXYWH": [
+            46,
+            80,
+            204,
+            246
+        ],
+        "SenderName": {
+            "XYWHpos": [
+                376,
+                293,
+                102,
+                32.41
+            ],"Source Serif Pro",
+            "font-size": 12,
+        }
+        "RecipientName": {
+            "XYWHpos": [
+                376,
+                251.06,
+                102,
+                32.41
+            ], "Source Serif Pro",
+            "font-size": 12,
+        }
+        "artXYWH": [
+            341.44,
+            39.7,
+            175.24,
+            175.24
+        ]
+    }
+}
